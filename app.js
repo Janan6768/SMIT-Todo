@@ -17,6 +17,7 @@ add.addEventListener('click', () => {
         
         textInput.value = '';
         textInput.focus();
+        updateTaskCount();
     }
     else {
         alert('PLease Enter SOme Values!')
@@ -26,7 +27,13 @@ add.addEventListener('click', () => {
 ul.addEventListener('click', (e) => {
     if(e.target.classList.contains('fa-trash'))
     e.target.closest('li').remove();
+    updateTaskCount();
 });
+
+const updateTaskCount = () => {
+    const count = ul.querySelectorAll('li').length;
+    document.getElementById('task-count').textContent = `Total Tasks: ${count}`;
+};
 
 ul.addEventListener('click', (e) => {
     if(e.target.classList.contains('fa-pen')) {
